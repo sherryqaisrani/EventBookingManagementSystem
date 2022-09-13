@@ -1,6 +1,7 @@
 import 'package:eventbookingmanagement/controllers/suggestion_animation_controller.dart';
 import 'package:eventbookingmanagement/screens/favourite_screen.dart';
 import 'package:eventbookingmanagement/screens/home_screen.dart';
+import 'package:eventbookingmanagement/screens/notification_screen.dart';
 import 'package:eventbookingmanagement/screens/suggestion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ class _CustomBottomTabbarState extends State<CustomBottomTabbar> {
     HomeScreen(),
     FavouriteScreen(),
     SuggesstionScreen(),
-    //NotificationScreen(),
+    NotificationScreen(),
     //Profile()
   ];
 
