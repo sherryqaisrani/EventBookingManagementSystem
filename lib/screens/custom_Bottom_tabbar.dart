@@ -1,7 +1,9 @@
+import 'package:eventbookingmanagement/controllers/image_picker_controller.dart';
 import 'package:eventbookingmanagement/controllers/suggestion_animation_controller.dart';
 import 'package:eventbookingmanagement/screens/favourite_screen.dart';
 import 'package:eventbookingmanagement/screens/home_screen.dart';
 import 'package:eventbookingmanagement/screens/notification_screen.dart';
+import 'package:eventbookingmanagement/screens/profile_screen.dart';
 import 'package:eventbookingmanagement/screens/suggestion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +20,7 @@ class _CustomBottomTabbarState extends State<CustomBottomTabbar> {
     FavouriteScreen(),
     SuggesstionScreen(),
     NotificationScreen(),
-    //Profile()
+    ProfileScreen(),
   ];
 
   void _updateIndex(int value) {
@@ -30,6 +32,7 @@ class _CustomBottomTabbarState extends State<CustomBottomTabbar> {
   @override
   Widget build(BuildContext context) {
     Get.put(SuggestionAnimationController());
+    Get.put(ImagePickerController());
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
