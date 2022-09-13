@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:eventbookingmanagement/models/event_model.dart';
+import 'package:eventbookingmanagement/screens/event_detail_screen.dart';
 import 'package:eventbookingmanagement/services/api_services.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,7 @@ class EventDetailController extends GetxController {
       Map<String, dynamic> map = jsonDecode(response.toString());
       if (map['code'] == 200) {
         listOfEventDetail.add(EventData.fromJson(map['data']));
-        // Get.to(EventDetailScreen());
+        Get.to(EventDetailScreen());
       }
     } else {
       print('***************************** No Data Fetched');

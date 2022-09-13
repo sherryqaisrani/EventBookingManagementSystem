@@ -33,7 +33,6 @@ class LoginController extends GetxController {
       return message;
     } else {
       return message = 'Not Working';
-      print('Login Not Working................. So SAd');
     }
   }
 }

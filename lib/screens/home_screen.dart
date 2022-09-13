@@ -567,17 +567,6 @@ class HomeScreen extends StatelessWidget {
                                                       EventDetailController>()
                                                   .eventDetail(controller
                                                       .listEvent[index].id));
-                                              // Navigator.push(
-                                              //   context,
-                                              //   MaterialPageRoute(
-                                              //     builder: (context) =>
-                                              //         //     EventDetailScreen(
-                                              //         //   indexOfIndex: controller
-                                              //         //       .listEvent[index].id,
-                                              //         // ),
-
-                                              //   ),
-                                              // );
                                             },
                                             child: CustomButton(
                                               textColor: Colors.black,
