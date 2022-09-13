@@ -6,12 +6,14 @@ class CusTomTextFormField extends StatelessWidget {
 
   bool? obscure;
   IconData? suffixIcon;
+  VoidCallback? pressed;
 
   CusTomTextFormField({
     required this.hintTxt,
     this.obscure,
     required this.controller,
-    required this.suffixIcon,
+    this.suffixIcon,
+    this.pressed,
   });
 
   @override
@@ -33,7 +35,7 @@ class CusTomTextFormField extends StatelessWidget {
             decoration: InputDecoration(
                 hintText: hintTxt,
                 suffixIcon: IconButton(
-                  onPressed: () {},
+                  onPressed: pressed,
                   icon: Icon(suffixIcon, color: Color(0xff04a4a4)),
                 ),
                 border: InputBorder.none,

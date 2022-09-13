@@ -1,5 +1,8 @@
+import 'package:eventbookingmanagement/controllers/create_event_controller.dart';
 import 'package:eventbookingmanagement/controllers/event_detail_controller.dart';
 import 'package:eventbookingmanagement/controllers/get_event_controller.dart';
+import 'package:eventbookingmanagement/controllers/image_upload_controller.dart';
+import 'package:eventbookingmanagement/controllers/logout_controller.dart';
 import 'package:eventbookingmanagement/controllers/search_controller.dart';
 import 'package:get/get.dart';
 
@@ -17,11 +20,11 @@ Future<void> initData() async {
   Get.lazyPut(() => RegisterController(apiServices: Get.find()));
 
   Get.lazyPut(() => LoginController(apiServices: Get.find()));
-  //Get.lazyPut(() => LogoutController(apiServices: Get.find()));
+  Get.lazyPut(() => LogoutController(apiServices: Get.find()));
   Get.lazyPut(() => GetEventController(apiServices: Get.find()));
   Get.lazyPut(() => EventDetailController(apiServices: Get.find()));
   Get.lazyPut(() => SearchController(apiServices: Get.find()));
 
-  // Get.lazyPut(() => CreateEventController(apiServices: Get.find()));
-  // Get.lazyPut(() => UploadImageController(apiServices: Get.find()));
+  Get.lazyPut(() => CreateEventController(apiServices: Get.find()));
+  Get.lazyPut(() => UploadImageController(apiServices: Get.find()));
 }

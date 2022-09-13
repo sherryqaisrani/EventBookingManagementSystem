@@ -2,6 +2,7 @@ import 'package:eventbookingmanagement/controllers/event_detail_controller.dart'
 import 'package:eventbookingmanagement/controllers/favourite_controller.dart';
 import 'package:eventbookingmanagement/controllers/get_event_controller.dart';
 import 'package:eventbookingmanagement/controllers/search_controller.dart';
+import 'package:eventbookingmanagement/screens/create_event.dart';
 import 'package:eventbookingmanagement/screens/custome_mark.dart';
 import 'package:eventbookingmanagement/screens/login_Screen.dart';
 import 'package:eventbookingmanagement/screens/mail_screen.dart';
@@ -74,8 +75,8 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Login()));
                 } else {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => CreateEvent()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CreateEvent()));
                 }
               },
               child:
@@ -88,59 +89,65 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: TextFormField(
-                      onChanged: (value) {},
+          GetBuilder<SearchController>(builder: (controller) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                      ),
+                      width: MediaQuery.of(context).size.width,
+                      child: TextFormField(
+                        onChanged: (value) {},
 
-                      keyboardType: TextInputType.emailAddress,
-                      controller: textInputForSearch,
-                      // textInputAction: TextInputAction.next,
-                      cursorColor: Color(0xff04a4a4),
-                      decoration: InputDecoration(
-                        hintText: 'Search.....',
-                        suffixIcon: InkWell(
-                          onTap: () {
-                            loadinData();
-                          },
-                          child: Icon(
-                            Icons.search,
+                        keyboardType: TextInputType.emailAddress,
+                        controller: textInputForSearch,
+                        // textInputAction: TextInputAction.next,
+                        cursorColor: Color(0xff04a4a4),
+                        decoration: InputDecoration(
+                          hintText: 'Search.....',
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              controller.serach
+                                  ? {
+                                      controller.cancelButton(),
+                                      textInputForSearch.text = '',
+                                    }
+                                  : loadinData();
+                            },
+                            child: Icon(
+                              controller.serach ? Icons.cancel : Icons.search,
+                            ),
                           ),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          color: Color(0xff04a4a4),
-                        ),
-                        border: InputBorder.none,
-                        labelStyle: const TextStyle(
-                          letterSpacing: 2,
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Color(0xff04a4a4),
+                          ),
+                          border: InputBorder.none,
+                          labelStyle: const TextStyle(
+                            letterSpacing: 2,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ]),
-            ),
-          ),
+                ]),
+              ),
+            );
+          }),
           const SizedBox(
             height: 10,
           ),
           SizedBox(
             height: 40,
             child: ListView.builder(
-                physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: 4,
@@ -574,13 +581,6 @@ class HomeScreen extends StatelessWidget {
                                               borderColor: Color(0xffeccc0c),
                                               buttonTitle: 'Details',
                                             ))
-                                        // ListTile(
-                                        //   leading: Icon(
-                                        //     Icons.pin_drop, color: Color(0xff04a4a4),
-                                        //
-                                        //   ),
-                                        //   title: Text('Center De Congres Bellevue'),
-                                        // )
                                       ],
                                     ))
                               ],

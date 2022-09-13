@@ -13,27 +13,39 @@ class SearchController extends GetxController {
 
   SearchController({required this.apiServices});
 
+  cancelButton() {
+    serach = false;
+    searchList = [];
+    update();
+  }
+
   Future<String> searchEvent({required String eventName}) async {
-    String searchResponse = '';
-    final response = await apiServices.searchEvent({
-      'search_string': eventName,
-    });
+    String finalRespone = '';
+    if (eventName.isNotEmpty) {
+      serach = false;
+      searchList = [];
+      String searchResponse = '';
+      final response = await apiServices.searchEvent({
+        'search_string': eventName,
+      });
 
-    if (response.statusCode == 200) {
-      Map<String, dynamic> map = jsonDecode(response.toString());
-      if (map['code'] == 200) {
-        // searchList = [];
-        // searchList.add(SearchData.fromJson(map['data']));
-        serach = !serach;
-        print(serach);
-        searchList =
-            (map['data'] as List).map((e) => SearchData.fromJson(e)).toList();
+      if (response.statusCode == 200) {
+        Map<String, dynamic> map = jsonDecode(response.toString());
+        if (map['code'] == 200) {
+          // searchList = [];
+          // searchList.add(SearchData.fromJson(map['data']));
+          serach = !serach;
+          print(serach);
+          searchList =
+              (map['data'] as List).map((e) => SearchData.fromJson(e)).toList();
 
+          update();
+        }
         update();
+        return searchResponse = 'success';
       }
-      update();
-      return searchResponse = 'success';
+      return searchResponse = 'failed';
     }
-    return searchResponse = 'failed';
+    return finalRespone;
   }
 }
