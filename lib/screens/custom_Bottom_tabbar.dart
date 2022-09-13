@@ -1,5 +1,9 @@
+import 'package:eventbookingmanagement/controllers/suggestion_animation_controller.dart';
+import 'package:eventbookingmanagement/screens/favourite_screen.dart';
 import 'package:eventbookingmanagement/screens/home_screen.dart';
+import 'package:eventbookingmanagement/screens/suggestion_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomBottomTabbar extends StatefulWidget {
   @override
@@ -10,8 +14,8 @@ class _CustomBottomTabbarState extends State<CustomBottomTabbar> {
   int _currentIndex = 0;
   List _screens = [
     HomeScreen(),
-    //FavoriteScreen(),
-    //Suggestion(),
+    FavouriteScreen(),
+    SuggesstionScreen(),
     //NotificationScreen(),
     //Profile()
   ];
@@ -24,6 +28,7 @@ class _CustomBottomTabbarState extends State<CustomBottomTabbar> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SuggestionAnimationController());
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
