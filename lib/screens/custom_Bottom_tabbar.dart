@@ -1,3 +1,4 @@
+import 'package:eventbookingmanagement/controllers/date_picker_controller.dart';
 import 'package:eventbookingmanagement/controllers/image_picker_controller.dart';
 import 'package:eventbookingmanagement/controllers/suggestion_animation_controller.dart';
 import 'package:eventbookingmanagement/screens/favourite_screen.dart';
@@ -33,6 +34,7 @@ class _CustomBottomTabbarState extends State<CustomBottomTabbar> {
   Widget build(BuildContext context) {
     Get.put(SuggestionAnimationController());
     Get.put(ImagePickerController());
+    Get.put(TimeAndCalenderController());
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

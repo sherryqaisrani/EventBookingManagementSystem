@@ -1,3 +1,4 @@
+import 'package:eventbookingmanagement/controllers/date_picker_controller.dart';
 import 'package:eventbookingmanagement/controllers/event_detail_controller.dart';
 import 'package:eventbookingmanagement/controllers/favourite_controller.dart';
 import 'package:eventbookingmanagement/controllers/get_event_controller.dart';
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
     );
     if (response == 'success') {
       Get.snackbar(
-        "",
+        "Please Wait",
         "Searching.......",
         dismissDirection: DismissDirection.horizontal,
         isDismissible: true,
@@ -99,44 +100,51 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: Row(children: [
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      child: TextFormField(
-                        onChanged: (value) {},
+                    child: TextFormField(
+                      onChanged: (value) {},
 
-                        keyboardType: TextInputType.emailAddress,
-                        controller: textInputForSearch,
-                        // textInputAction: TextInputAction.next,
-                        cursorColor: Color(0xff04a4a4),
-                        decoration: InputDecoration(
-                          hintText: 'Search.....',
-                          suffixIcon: InkWell(
-                            onTap: () {
-                              controller.serach
-                                  ? {
-                                      controller.cancelButton(),
-                                      textInputForSearch.text = '',
-                                    }
-                                  : loadinData();
-                            },
-                            child: Icon(
-                              controller.serach ? Icons.cancel : Icons.search,
-                            ),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Color(0xff04a4a4),
-                          ),
-                          border: InputBorder.none,
-                          labelStyle: const TextStyle(
-                            letterSpacing: 2,
-                          ),
+                      keyboardType: TextInputType.emailAddress,
+                      controller: textInputForSearch,
+                      // textInputAction: TextInputAction.next,
+                      cursorColor: Color(0xff04a4a4),
+                      decoration: InputDecoration(
+                        hintText: 'Search.....',
+                        contentPadding: EdgeInsets.only(
+                          left: 2,
+                        ),
+                        border: InputBorder.none,
+                        labelStyle: const TextStyle(
+                          letterSpacing: 20,
                         ),
                       ),
                     ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      controller.serach
+                          ? {
+                              controller.cancelButton(),
+                              textInputForSearch.text = '',
+                            }
+                          : loadinData();
+                    },
+                    child: Icon(
+                      controller.serach ? Icons.cancel : Icons.search,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      right: 10,
+                    ),
+                    child: InkWell(
+                        onTap: () {
+                          Get.find<TimeAndCalenderController>()
+                              .callCalender(context, textInputForSearch);
+                        },
+                        child: Icon(Icons.calendar_month)),
                   ),
                 ]),
               ),

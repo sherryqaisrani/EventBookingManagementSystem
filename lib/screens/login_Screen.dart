@@ -1,3 +1,5 @@
+import 'package:eventbookingmanagement/screens/custom_Bottom_tabbar.dart';
+import 'package:eventbookingmanagement/screens/home_screen.dart';
 import 'package:eventbookingmanagement/screens/signup.dart';
 import 'package:eventbookingmanagement/utils/app_files.dart';
 import 'package:eventbookingmanagement/widgets/custom_Textfield.dart';
@@ -210,12 +212,12 @@ class Login extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const HomeScreen(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CustomBottomTabbar(),
+                      ),
+                    );
                   },
                   child: Center(
                       child: RichText(

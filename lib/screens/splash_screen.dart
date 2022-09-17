@@ -8,7 +8,6 @@ import 'package:eventbookingmanagement/utils/app_files.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'onboardingScreen.dart';
 
 class SplashScreen extends StatefulWidget {
